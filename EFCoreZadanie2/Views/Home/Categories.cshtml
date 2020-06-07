@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h4>Kategorie</h4>
+    <ul class="list-group">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var category in Model)
+             {
+                 <li class="list-group-item">
+                     @category.Name
+                 </li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item">
+                Nie dodano jeszcze żadnej kategorii
+            </li>
+        }
+        <li class="list-group-item">
+            <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="AddCategory">Dodaj kategorię</a>
+        </li>
+    </ul>
+</div>

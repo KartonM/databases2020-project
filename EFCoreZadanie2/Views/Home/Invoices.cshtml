@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Invoice>
+
+@{
+    ViewData["Title"] = "Sprzedaże";
+}
+
+<div>
+    <h3>Sprzedaże</h3>
+    <table class="table border">
+        <thead>
+        <tr>
+            <th style="width: auto" scope="col">Klient</th>
+            <th style="width: auto" scope="col">Numer faktury</th>
+            <th style="width: auto" scope="col">Data</th>
+            <th style="width: auto" scope="col">Kwota</th>
+            <th style="width: auto" scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var invoice in Model)
+            {
+                <tr>
+                    <td>@invoice.Customer.CompanyName</td>
+                    <td>@invoice.InvoiceNumber</td>
+                    <td>@invoice.DateTimeString()</td>
+                    <td>@invoice.Amount() PLN</td>
+                    <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="InvoiceDetails" asp-route-invoiceId="@invoice.InvoiceID">Szczegóły</a></td>
+                </tr>
+            }
+        }
+        <tr class="border-top">
+            <td><a class="btn btn-outline-primary" asp-controller="Home" asp-action="AddInvoice">Zarejestruj sprzedaż</a></td>
+            <td></td><td></td><td></td><td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

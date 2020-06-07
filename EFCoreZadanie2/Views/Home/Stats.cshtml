@@ -1,0 +1,65 @@
+﻿@model EFCoreZadanie2.ViewModels.StatsViewModel
+
+@{
+    ViewData["Title"] = "Statystyki";
+}
+
+<div>
+    <h3>Statystyki</h3>
+    <dl class="row">
+        <dt class="col-sm-4">
+            Suma sprzedaży z ostatnich 7 dni
+        </dt>
+        <dd class="col-sm-8">
+            @Model.WeeklySum PLN
+        </dd>
+        <dt class="col-sm-4">
+            Najaktywniejsi klienci z ostatnich 7 dni
+        </dt>
+        <dd class="col-sm-8">
+            @{ var i = 1;}
+            @foreach (var (customer, amount) in Model.WeeklyBestCustomers)
+            {
+                <p>@i. @customer.CompanyName - @amount PLN</p> 
+                {i++;}
+            }
+        </dd>
+        <dt class="col-sm-4">
+            Suma sprzedaży z ostatnich 30 dni
+        </dt>
+        <dd class="col-sm-8">
+            @Model.MonthlySum PLN
+        </dd>
+        <dt class="col-sm-4">
+            Najaktywniejsi klienci z ostatnich 30 dni
+        </dt>
+        <dd class="col-sm-8">
+            @{ i = 1;}
+            @foreach (var (customer, amount) in Model.MonthlyBestCustomers)
+            {
+                <p>@i. @customer.CompanyName - @amount PLN</p> 
+                {i++;}
+            }
+        </dd>
+        <dt class="col-sm-4">
+            Produkty z największą ilością sztuk w magazynie:
+        </dt>
+        <dd class="col-sm-8">
+            @{ i = 1; }
+            @foreach (var product in Model.MostUnitsInStock)
+            {
+                <p>@i. @product.Name - liczba sztuk: @product.UnitsInStock</p>
+                {i++;}
+            }
+        </dd>
+        <dt class="col-sm-4">
+            Dostawcy i ich produkty, które się skończyły
+        </dt>
+        <dd class="col-sm-8">
+            @foreach (var (supplier, products) in Model.SuppliersWithProductsRunOutOfStock)
+            {
+                <p>@supplier.CompanyName - @string.Join(", ", products.Select(p => p.Name))</p>
+            }
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,30 @@
+﻿@model EFCoreZadanie2.ViewModels.AddInvoiceProductViewModel
+@{
+    ViewData["Title"] = "Dodaj produkt do sprzedaży";
+}
+
+<form asp-action="AddInvoiceProduct" asp-controller="Home" method="post">
+    <input asp-for="InvoiceId" value="@Model.Invoice.InvoiceID" type="hidden"/>
+    <h4>Dodaj produkt do sprzedaży</h4>
+    <p>
+        <b>Klient: </b>@Model.Invoice.Customer.CompanyName<br/>
+        <b>Data: </b>@Model.Invoice.DateTimeString()
+    </p>
+    <div class="form-row">
+        <div class="form-group col-6">
+            <label asp-for="ProductId">Produkt</label>
+            <select asp-for="ProductId" class="custom-select"
+                    asp-items="@(new SelectList(Model.Products, "ProductID", "Name"))">
+                <option>Wybierz produkt</option>
+            </select>
+        </div>
+        <div class="form-group col-6">
+            <label asp-for="Quantity">Ilość</label>
+            <input asp-for="Quantity" class="form-control" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>

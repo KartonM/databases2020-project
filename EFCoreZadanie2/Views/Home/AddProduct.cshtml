@@ -1,0 +1,34 @@
+﻿@model EFCoreZadanie2.ViewModels.AddProductViewModel
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+
+<form asp-action="AddProduct" asp-controller="Home" method="post">
+    <h4>Dodaj produkt</h4>
+    <div class="form-group">
+        <label asp-for="Name">Nazwa produktu</label>
+        <input asp-for="Name" class="form-control" placeholder="Nazwa produktu" required="required">
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Cena</label>
+        <input asp-for="Price" class="form-control" required="required">
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId">Kategoria</label>
+        <select asp-for="CategoryId" class="custom-select"
+                asp-items="@(new SelectList(Model.Categories, "CategoryID", "Name"))">
+            <option>Wybierz kategorię</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="SupplierId">Dostawca</label>
+        <select asp-for="SupplierId" class="custom-select"
+                asp-items="@(new SelectList(Model.Suppliers, "CompanyID", "CompanyName"))">
+            <option>Wybierz dostawcę</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Dodaj produkt</button>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>

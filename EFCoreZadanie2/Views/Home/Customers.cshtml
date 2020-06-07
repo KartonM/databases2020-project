@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Customer>
+
+@{
+    ViewData["Title"] = "Klienci";
+}
+
+<div>
+    <h3>Klienci</h3>
+    <table class="table border">
+        <thead>
+            <tr>
+                <th style="width: auto" scope="col">Nazwa firmy</th>
+                <th style="width: auto" scope="col">Adres</th>
+                <th style="width: auto" scope="col">Zniżka</th>
+                <th style="width: auto" scope="col">Suma sprzedaży</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var customer in Model)
+            {
+            <tr>
+                <td>@customer.CompanyName</td>
+                <td>@customer.Address()</td>
+                <td>@customer.DiscountString()</td>
+                <td>@customer.InvoicesSum() PLN</td>
+            </tr>
+            }
+        }
+        <tr class="border-top">
+            <td><a class="btn btn-outline-primary" asp-controller="Home" asp-action="AddCustomer">Dodaj klienta</a></td>
+            <td></td><td></td><td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

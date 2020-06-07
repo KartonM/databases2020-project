@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Produkty";
+}
+
+<div>
+    <h3>Produkty</h3>
+    <table class="table border">
+        <thead>
+            <tr>
+                <th style="width: auto" scope="col">Nazwa produktu</th>
+                <th style="width: auto" scope="col">Dostawca</th>
+                <th style="width: auto" scope="col">Cena</th>
+                <th style="width: auto" scope="col">Stan magazynu</th>
+                <th style="width: auto" scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var product in Model)
+            {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Supplier.CompanyName</td>
+                <td>@product.UnitPrice PLN</td>
+                <td>@product.UnitsInStock</td>
+                <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="RegisterSupply" asp-route-productId="@product.ProductID">Dostawa</a></td>
+            </tr>
+            }
+        }
+        <tr class="border-top">
+            <td><a class="btn btn-outline-primary" asp-controller="Home" asp-action="AddProduct">Dodaj produkt</a></td>
+            <td></td><td></td><td></td><td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,34 @@
+﻿@model EFCoreZadanie2.ViewModels.AddSupplierViewModel
+@{
+    ViewData["Title"] = "Dodaj dostawcę";
+}
+
+<form asp-action="AddSupplier" asp-controller="Home" method="post">
+    <h4>Dodaj dostawcę</h4>
+    <div class="form-group">
+        <label asp-for="CompanyName">Nazwa firmy</label>
+        <input asp-for="CompanyName" class="form-control" placeholder="Nazwa firmy" required="required">
+    </div>
+    <div class="form-group">
+        <label asp-for="Street">Ulica</label>
+        <input asp-for="Street" class="form-control" placeholder="ul. Długa 23/3" required="required">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-6">
+            <label asp-for="ZipCode">Kod pocztowy</label>
+            <input asp-for="ZipCode" class="form-control" placeholder="43-400" required="required">
+        </div>
+        <div class="form-group col-6">
+            <label asp-for="City">Miasto</label>
+            <input asp-for="City" class="form-control" placeholder="Pacanów" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="BankAccountNumber">Numer konta bankowego</label>
+        <input asp-for="BankAccountNumber" class="form-control" placeholder="0000 0000 0000 0000 0000" required="required">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Dodaj dostawcę</button>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>

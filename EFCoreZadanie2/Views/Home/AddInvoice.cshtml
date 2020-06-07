@@ -1,0 +1,23 @@
+﻿@model EFCoreZadanie2.ViewModels.AddInvoiceViewModel
+@{
+    ViewData["Title"] = "Zarejestruj sprzedaż";
+}
+
+<form asp-action="AddInvoice" asp-controller="Home" method="post">
+    <h4>Zarejestruj sprzedaż</h4>
+    <div class="form-group">
+        <label asp-for="CustomerId">Klient</label>
+        <select asp-for="CustomerId" class="custom-select"
+                asp-items="@(new SelectList(Model.Customers, "CompanyID", "CompanyName"))">
+            <option>Wybierz klienta</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="InvoiceNumber">Numer faktury</label>
+        <input asp-for="InvoiceNumber" class="form-control" required="required">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>

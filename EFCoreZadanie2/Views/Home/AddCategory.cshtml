@@ -1,0 +1,14 @@
+﻿@model EFCoreZadanie2.ViewModels.AddCategoryViewModel
+
+<form asp-action="AddCategory" asp-controller="Home" method="post">
+    <h4>Dodaj kategorię</h4>
+    <div class="form-row">
+        <div class="form-group col-9">
+            <input asp-for="Name" class="form-control" placeholder="Nazwa kategorii" required="required">
+        </div>
+        <div class="form-group col-3">
+            <button type="submit" class="btn btn-primary btn-block">Dodaj</button>
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>

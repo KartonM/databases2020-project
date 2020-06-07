@@ -1,0 +1,79 @@
+﻿@model Invoice
+@{
+    ViewData["Title"] = "Sprzedaż";
+}
+
+<div>
+    <h4>Szczegóły sprzedaży</h4>
+    <dl class="row">
+        <dt class="col-sm-3">
+            Klient
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Customer.CompanyName
+        </dd>
+        <dt class="col-sm-3">
+            Numer faktury
+        </dt>
+        <dd class="col-sm-9">
+            @Model.InvoiceNumber
+        </dd>
+        <dt class="col-sm-3">
+            Data
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DateTimeString()
+        </dd>
+        <dt class="col-sm-3">
+            Kwota
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Amount() PLN
+        </dd>
+        <dt class="col-sm-3">
+            <a class="btn btn-primary" asp-controller="Home" asp-action="AddInvoiceProduct" asp-route-invoiceId="@Model.InvoiceID">Dodaj produkt</a>
+        </dt>
+        <dd class="col-sm-9">
+        </dd>
+    </dl>
+    
+    @if (Model.InvoiceProducts != null && Model.InvoiceProducts.Any())
+    {
+    <table class="table border">
+        <thead>
+        <tr>
+            <th style="width: auto" scope="col">Nazwa produktu</th>
+            <th style="width: auto" scope="col">Ilość</th>
+            <th style="width: auto" scope="col">Cena za sztukę</th>
+            <th style="width: auto" scope="col" class="border-left">Kwota</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var invoiceProduct in Model.InvoiceProducts)
+        {
+            <tr class="border-top">
+                <td>@invoiceProduct.Product.Name</td>
+                <td>@invoiceProduct.Quantity</td>
+                <td>@invoiceProduct.Product.UnitPrice</td>
+                <td class="border-left">@invoiceProduct.Amount() PLN</td>
+            </tr>
+        }
+        @if (Model.Customer.DiscountPercentage > 0)
+        {
+            <tr class="border-top">
+                <td>Zniżka</td>
+                <td></td>
+                <td></td>
+                <td class="border-left">@Model.Customer.DiscountString()</td>
+            </tr>
+        }
+            <tr class="border-top">
+                <td><b>Suma</b></td>
+                <td></td>
+                <td></td>
+                <td class="border-left"><b>@Model.Amount() PLN</b></td>
+            </tr>
+        </tbody>
+    </table>
+    }
+</div>
