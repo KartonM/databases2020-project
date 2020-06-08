@@ -14,6 +14,7 @@
                 <th style="width: auto" scope="col">Cena sprzedaży</th>
                 <th style="width: auto" scope="col">Cena kupna</th>
                 <th style="width: auto" scope="col">Stan magazynu</th>
+                <th style="width: auto" scope="col">Ostatnia dostawa</th>
             </tr>
         </thead>
         <tbody>
@@ -27,12 +28,13 @@
                 <td>@product.SellingPricePerKg zł/kg</td>
                 <td>@product.BuyingPricePerKg zł/kg</td>
                 <td>@product.KgsInStock kg</td>
+                <td>@(product.LastSupplyDateString() ?? "brak")</td>
             </tr>
             }
         }
         <tr class="border-top">
             <td><a class="btn btn-outline-primary" asp-controller="Home" asp-action="AddProduct">Dodaj produkt</a></td>
-            <td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
         </tr>
         </tbody>
     </table>

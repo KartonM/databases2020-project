@@ -56,7 +56,8 @@ namespace FruitAndVegetableWarehouseManagement.Data
             _db.Companies.FirstOrDefault(c => c is Customer && c.CompanyID == customerId) as Customer;
 
         public IEnumerable<Product> Products() =>
-            _db.Products.Include(p => p.Supplier).Include(p => p.Category).AsEnumerable();
+            _db.Products.Include(p => p.Supplier).Include(p => p.Category).Include(p => p.SupplyProducts)
+                .ThenInclude(sp => sp.Supply).AsEnumerable();
 
         public Product GetProductById(int productId) =>
             _db.Products.Include(p => p.Supplier).FirstOrDefault(p => p.ProductID == productId);
