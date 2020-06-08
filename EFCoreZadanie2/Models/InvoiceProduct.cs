@@ -10,6 +10,6 @@
 
         public int Kilograms { get; set; }
 
-        public decimal Amount() => Product.PricePerKg * Kilograms;
+        public decimal Amount() => Product.SellingPricePerKg * Kilograms;
     }
 }

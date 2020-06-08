@@ -14,6 +14,6 @@ namespace FruitAndVegetableWarehouseManagement.ViewModels
         [Required]
         public int InvoiceId { get; set; }
         [Required]
-        public int Quantity { get; set; }
+        public int Kilograms { get; set; }
     }
 }

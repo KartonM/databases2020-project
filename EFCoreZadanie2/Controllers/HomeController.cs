@@ -123,7 +123,7 @@ namespace FruitAndVegetableWarehouseManagement.Controllers
             var invoice = _repo.GetInvoiceById(model.InvoiceId);
             var product = _repo.GetProductById(model.ProductId);
 
-            if (product.KgsInStock < model.Quantity)
+            if (product.KgsInStock < model.Kilograms)
             {
                 ModelState.AddModelError("", $"W magazynie zostało {product.KgsInStock} sztuk produktu {product.Name}");
                 model.Invoice = invoice;
@@ -134,10 +134,10 @@ namespace FruitAndVegetableWarehouseManagement.Controllers
             invoice.InvoiceProducts.Add(new InvoiceProduct()
             {
                 ProductID = model.ProductId,
-                Kilograms = model.Quantity
+                Kilograms = model.Kilograms
             });
 
-            product.KgsInStock -= model.Quantity;
+            product.KgsInStock -= model.Kilograms;
 
             _repo.UpdateInvoice(invoice);
             _repo.UpdateProduct(product);
@@ -192,7 +192,8 @@ namespace FruitAndVegetableWarehouseManagement.Controllers
             var newProduct = new Product()
             {
                 Name = model.Name,
-                PricePerKg = model.Price,
+                SellingPricePerKg = model.SellingPricePerKg,
+                BuyingPricePerKg = model.BuyingPricePerKg,
                 KgsInStock = 0,
                 Category = category,
                 Supplier = supplier

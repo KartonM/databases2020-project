@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 
 namespace FruitAndVegetableWarehouseManagement.Models
 {
-    public class Supply
+    public class SupplyProduct
     {
         public int SupplyId { get; set; }
-        public DateTime Date { get; set; }
+        public Supply Supply { get; set; }
 
-        public Supplier Supplier { get; set; }
-        public ICollection<SupplyProduct> SupplyProducts { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+
+        public int Kilograms { get; set; }
+
     }
 }

@@ -12,7 +12,9 @@ namespace FruitAndVegetableWarehouseManagement.ViewModels
         [Required]
         public string Name { get; set; }
         [Required]
-        public int Price { get; set; }
+        public decimal SellingPricePerKg { get; set; }
+        [Required]
+        public decimal BuyingPricePerKg { get; set; }
         [Required]
         public int SupplierId { get; set; }
         [Required]

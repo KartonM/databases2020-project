@@ -11,7 +11,8 @@
             <tr>
                 <th style="width: auto" scope="col">Nazwa produktu</th>
                 <th style="width: auto" scope="col">Dostawca</th>
-                <th style="width: auto" scope="col">Cena</th>
+                <th style="width: auto" scope="col">Cena sprzedaży</th>
+                <th style="width: auto" scope="col">Cena kupna</th>
                 <th style="width: auto" scope="col">Stan magazynu</th>
                 <th style="width: auto" scope="col"></th>
             </tr>
@@ -24,7 +25,8 @@
             <tr>
                 <td>@product.Name</td>
                 <td>@product.Supplier.CompanyName</td>
-                <td>@product.PricePerKg PLN</td>
+                <td>@product.SellingPricePerKg zł/kg</td>
+                <td>@product.BuyingPricePerKg zł/kg</td>
                 <td>@product.KgsInStock</td>
                 <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="RegisterSupply" asp-route-productId="@product.ProductID">Dostawa</a></td>
             </tr>

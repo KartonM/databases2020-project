@@ -15,6 +15,7 @@ namespace FruitAndVegetableWarehouseManagement.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Supply> Supplies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +31,19 @@ namespace FruitAndVegetableWarehouseManagement.Data
                 .HasOne(ip => ip.Product)
                 .WithMany(p => p.InvoiceProducts)
                 .HasForeignKey(ip => ip.ProductID);
+
+            modelBuilder.Entity<SupplyProduct>()
+                .HasKey(sp => new {sp.SupplyId, sp.ProductId});
+
+            modelBuilder.Entity<SupplyProduct>()
+                .HasOne(sp => sp.Supply)
+                .WithMany(s => s.SupplyProducts)
+                .HasForeignKey(sp => sp.SupplyId);
+
+            modelBuilder.Entity<SupplyProduct>()
+                .HasOne(sp => sp.Product)
+                .WithMany(p => p.SupplyProducts)
+                .HasForeignKey(sp => sp.ProductId);
 
             modelBuilder.Entity<Company>()
                 .HasDiscriminator<string>("CompanyType")
