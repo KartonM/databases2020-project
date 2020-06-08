@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreZadanie2", "EFCoreZadanie2\EFCoreZadanie2.csproj", "{73C6708A-D620-4C15-ACD0-15C75CF32A13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FruitAndVegetableWarehouseManagement", "EFCoreZadanie2\FruitAndVegetableWarehouseManagement.csproj", "{73C6708A-D620-4C15-ACD0-15C75CF32A13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

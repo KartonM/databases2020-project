@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using EFCoreZadanie2.Data;
+using FruitAndVegetableWarehouseManagement.Data;
+using FruitAndVegetableWarehouseManagement.Models;
+using FruitAndVegetableWarehouseManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using EFCoreZadanie2.Models;
-using EFCoreZadanie2.ViewModels;
 
-namespace EFCoreZadanie2.Controllers
+namespace FruitAndVegetableWarehouseManagement.Controllers
 {
     public class HomeController : Controller
     {
@@ -125,9 +123,9 @@ namespace EFCoreZadanie2.Controllers
             var invoice = _repo.GetInvoiceById(model.InvoiceId);
             var product = _repo.GetProductById(model.ProductId);
 
-            if (product.UnitsInStock < model.Quantity)
+            if (product.KgsInStock < model.Quantity)
             {
-                ModelState.AddModelError("", $"W magazynie zostało {product.UnitsInStock} sztuk produktu {product.Name}");
+                ModelState.AddModelError("", $"W magazynie zostało {product.KgsInStock} sztuk produktu {product.Name}");
                 model.Invoice = invoice;
                 model.Products = _repo.Products();
                 return View(model);
@@ -136,10 +134,10 @@ namespace EFCoreZadanie2.Controllers
             invoice.InvoiceProducts.Add(new InvoiceProduct()
             {
                 ProductID = model.ProductId,
-                Quantity = model.Quantity
+                Kilograms = model.Quantity
             });
 
-            product.UnitsInStock -= model.Quantity;
+            product.KgsInStock -= model.Quantity;
 
             _repo.UpdateInvoice(invoice);
             _repo.UpdateProduct(product);
@@ -194,8 +192,8 @@ namespace EFCoreZadanie2.Controllers
             var newProduct = new Product()
             {
                 Name = model.Name,
-                UnitPrice = model.Price,
-                UnitsInStock = 0,
+                PricePerKg = model.Price,
+                KgsInStock = 0,
                 Category = category,
                 Supplier = supplier
             };
@@ -218,7 +216,7 @@ namespace EFCoreZadanie2.Controllers
         public IActionResult RegisterSupply(RegisterSupplyViewModel model)
         {
             var product = _repo.GetProductById(model.ProductId);
-            product.UnitsInStock += model.SuppliedUnits;
+            product.KgsInStock += model.SuppliedUnits;
             _repo.UpdateProduct(product);
 
             return RedirectToAction("Products");

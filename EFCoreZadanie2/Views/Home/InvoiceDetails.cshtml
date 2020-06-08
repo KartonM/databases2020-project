@@ -1,4 +1,4 @@
-﻿@model Invoice
+﻿@model FruitAndVegetableWarehouseManagement.Models.Invoice
 @{
     ViewData["Title"] = "Sprzedaż";
 }
@@ -53,8 +53,8 @@
         {
             <tr class="border-top">
                 <td>@invoiceProduct.Product.Name</td>
-                <td>@invoiceProduct.Quantity</td>
-                <td>@invoiceProduct.Product.UnitPrice</td>
+                <td>@invoiceProduct.Kilograms</td>
+                <td>@invoiceProduct.Product.PricePerKg</td>
                 <td class="border-left">@invoiceProduct.Amount() PLN</td>
             </tr>
         }

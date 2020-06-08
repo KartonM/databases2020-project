@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EFCoreZadanie2.Models;
+﻿using System.Collections.Generic;
+using FruitAndVegetableWarehouseManagement.Models;
 
-namespace EFCoreZadanie2.Data
+namespace FruitAndVegetableWarehouseManagement.Data
 {
     public interface IRepository
     {

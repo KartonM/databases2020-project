@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace EFCoreZadanie2.Models
+namespace FruitAndVegetableWarehouseManagement.Models
 {
     public class Product
     {
         public int ProductID { get; set; }
         public string Name { get; set; }
-        public int UnitsInStock { get; set; }
-        public decimal UnitPrice { get; set; }
+        public int KgsInStock { get; set; }
+        public decimal PricePerKg { get; set; }
 
         public Supplier Supplier { get; set; }
         public Category Category { get; set; }

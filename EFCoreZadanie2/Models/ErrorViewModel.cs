@@ -1,6 +1,4 @@
-using System;
-
-namespace EFCoreZadanie2.Models
+namespace FruitAndVegetableWarehouseManagement.Models
 {
     public class ErrorViewModel
     {

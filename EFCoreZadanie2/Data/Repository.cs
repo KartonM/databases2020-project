@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using EFCoreZadanie2.Models;
+using FruitAndVegetableWarehouseManagement.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCoreZadanie2.Data
+namespace FruitAndVegetableWarehouseManagement.Data
 {
     public class Repository : IRepository
     {
@@ -113,12 +112,12 @@ namespace EFCoreZadanie2.Data
             .ToList();
 
         public IEnumerable<Product> TopProductsWithMostUnitsInStock(int count) =>
-            _db.Products.OrderByDescending(p => p.UnitsInStock).Take(count).ToList();
+            _db.Products.OrderByDescending(p => p.KgsInStock).Take(count).ToList();
 
         public IEnumerable<KeyValuePair<Supplier, IEnumerable<Product>>> SuppliersWithProductsRunOutOfStock() => _db
             .Products
             .Include(p => p.Supplier)
-            .Where(p => p.UnitsInStock <= 0)
+            .Where(p => p.KgsInStock <= 0)
             .GroupBy(p => p.Supplier)
             .Select(grouping => new KeyValuePair<Supplier, IEnumerable<Product>>(
                 grouping.Key,

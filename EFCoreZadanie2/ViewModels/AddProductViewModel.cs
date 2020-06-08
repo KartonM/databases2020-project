@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using EFCoreZadanie2.Models;
+using FruitAndVegetableWarehouseManagement.Models;
 
-namespace EFCoreZadanie2.ViewModels
+namespace FruitAndVegetableWarehouseManagement.ViewModels
 {
     public class AddProductViewModel
     {

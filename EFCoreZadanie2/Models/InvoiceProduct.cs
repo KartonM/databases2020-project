@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EFCoreZadanie2.Models
+﻿namespace FruitAndVegetableWarehouseManagement.Models
 {
     public class InvoiceProduct
     {
@@ -13,8 +8,8 @@ namespace EFCoreZadanie2.Models
         public int ProductID { get; set; }
         public Product Product { get; set; }
 
-        public int Quantity { get; set; }
+        public int Kilograms { get; set; }
 
-        public decimal Amount() => Product.UnitPrice * Quantity;
+        public decimal Amount() => Product.PricePerKg * Kilograms;
     }
 }

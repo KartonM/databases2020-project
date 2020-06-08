@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace EFCoreZadanie2.Models
+namespace FruitAndVegetableWarehouseManagement.Models
 {
     public class Invoice
     {

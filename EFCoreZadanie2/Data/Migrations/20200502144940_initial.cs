@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EFCoreZadanie2.Data.Migrations
+namespace FruitAndVegetableWarehouseManagement.Data.Migrations
 {
     public partial class initial : Migration
     {

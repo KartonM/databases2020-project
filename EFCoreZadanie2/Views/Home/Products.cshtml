@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model IEnumerable<FruitAndVegetableWarehouseManagement.Models.Product>
 
 @{
     ViewData["Title"] = "Produkty";
@@ -24,8 +24,8 @@
             <tr>
                 <td>@product.Name</td>
                 <td>@product.Supplier.CompanyName</td>
-                <td>@product.UnitPrice PLN</td>
-                <td>@product.UnitsInStock</td>
+                <td>@product.PricePerKg PLN</td>
+                <td>@product.KgsInStock</td>
                 <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="RegisterSupply" asp-route-productId="@product.ProductID">Dostawa</a></td>
             </tr>
             }

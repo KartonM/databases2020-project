@@ -1,4 +1,4 @@
-﻿@model EFCoreZadanie2.ViewModels.StatsViewModel
+﻿@model FruitAndVegetableWarehouseManagement.ViewModels.StatsViewModel
 
 @{
     ViewData["Title"] = "Statystyki";
@@ -48,7 +48,7 @@
             @{ i = 1; }
             @foreach (var product in Model.MostUnitsInStock)
             {
-                <p>@i. @product.Name - liczba sztuk: @product.UnitsInStock</p>
+                <p>@i. @product.Name - liczba sztuk: @product.KgsInStock</p>
                 {i++;}
             }
         </dd>

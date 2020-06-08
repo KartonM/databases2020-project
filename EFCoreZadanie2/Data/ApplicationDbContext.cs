@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EFCoreZadanie2.Models;
+﻿using FruitAndVegetableWarehouseManagement.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCoreZadanie2.Data
+namespace FruitAndVegetableWarehouseManagement.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
