@@ -14,7 +14,6 @@
                 <th style="width: auto" scope="col">Cena sprzedaży</th>
                 <th style="width: auto" scope="col">Cena kupna</th>
                 <th style="width: auto" scope="col">Stan magazynu</th>
-                <th style="width: auto" scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +26,7 @@
                 <td>@product.Supplier.CompanyName</td>
                 <td>@product.SellingPricePerKg zł/kg</td>
                 <td>@product.BuyingPricePerKg zł/kg</td>
-                <td>@product.KgsInStock</td>
-                <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="RegisterSupply" asp-route-productId="@product.ProductID">Dostawa</a></td>
+                <td>@product.KgsInStock kg</td>
             </tr>
             }
         }

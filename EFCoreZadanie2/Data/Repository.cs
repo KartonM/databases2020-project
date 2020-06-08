@@ -96,6 +96,25 @@ namespace FruitAndVegetableWarehouseManagement.Data
             .ThenInclude(ip => ip.Product)
             .FirstOrDefault(i => i.InvoiceID == invoiceId);
 
+        public IEnumerable<Supply> Supplies() =>
+            _db.Supplies.Include(s => s.Supplier).OrderByDescending(s => s.Date).AsEnumerable();
+
+        public void AddSupply(Supply supply)
+        {
+            _db.Supplies.Add(supply);
+            _db.SaveChanges();
+        }
+
+        public void UpdateSupply(Supply supply)
+        {
+            _db.Supplies.Update(supply);
+            _db.SaveChanges();
+        }
+
+        public Supply GetSupplyById(int supplyId) => _db.Supplies.Include(s => s.SupplyProducts)
+            .ThenInclude(sp => sp.Product).Include(s => s.Supplier).ThenInclude(s => s.Products)
+            .FirstOrDefault(s => s.SupplyId == supplyId);
+
         public IEnumerable<KeyValuePair<Customer, decimal>> TopCustomersWithAmountsFromLast(int days, int count) => _db
             .Companies
             .OfType<Customer>()

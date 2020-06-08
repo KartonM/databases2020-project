@@ -1,0 +1,49 @@
+﻿@model FruitAndVegetableWarehouseManagement.Models.Supply
+@{
+    ViewData["Title"] = "Dostawa";
+}
+
+<div>
+    <h4>Szczegóły dostawy</h4>
+    <dl class="row">
+        <dt class="col-sm-3">
+            Dostawca
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Supplier.CompanyName
+        </dd>
+        <dt class="col-sm-3">
+            Data
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DateTimeString()
+        </dd>
+
+        <dt class="col-sm-3">
+            <a class="btn btn-primary" asp-controller="Home" asp-action="AddSupplyProduct" asp-route-supplyId="@Model.SupplyId">Dodaj produkt</a>
+        </dt>
+        <dd class="col-sm-9">
+        </dd>
+    </dl>
+
+    @if (Model.SupplyProducts != null && Model.SupplyProducts.Any())
+    {
+        <table class="table border">
+            <thead>
+                <tr>
+                    <th style="width: auto" scope="col">Nazwa produktu</th>
+                    <th style="width: auto" scope="col">Ilość</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invoiceProduct in Model.SupplyProducts)
+                {
+                    <tr class="border-top">
+                        <td>@invoiceProduct.Product.Name</td>
+                        <td>@invoiceProduct.Kilograms kg</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -28,6 +28,11 @@ namespace FruitAndVegetableWarehouseManagement.Data
         void UpdateInvoice(Invoice invoice);
         Invoice GetInvoiceById(int invoiceId);
 
+        IEnumerable<Supply> Supplies();
+        void AddSupply(Supply supply);
+        void UpdateSupply(Supply supply);
+        Supply GetSupplyById(int supplyId);
+
         IEnumerable<KeyValuePair<Customer, decimal>> TopCustomersWithAmountsFromLast(int days, int count);
         IEnumerable<Product> TopProductsWithMostUnitsInStock(int count);
         IEnumerable<KeyValuePair<Supplier, IEnumerable<Product>>> SuppliersWithProductsRunOutOfStock();

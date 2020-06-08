@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FruitAndVegetableWarehouseManagement.Models.Supply>
+
+@{
+    ViewData["Title"] = "Dostawy";
+}
+
+<div>
+    <h3>Sprzedaże</h3>
+    <table class="table border">
+        <thead>
+            <tr>
+                <th style="width: auto" scope="col">Dostawca</th>
+                <th style="width: auto" scope="col">Data</th>
+                <th style="width: auto" scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var supply in Model)
+                {
+                    <tr>
+                        <td>@supply.Supplier.CompanyName</td>
+                        <td>@supply.DateTimeString()</td>
+                        <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="SupplyDetails" asp-route-supplyId="@supply.SupplyId">Szczegóły</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>Brak dostaw</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

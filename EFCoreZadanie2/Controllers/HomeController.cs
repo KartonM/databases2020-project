@@ -204,25 +204,6 @@ namespace FruitAndVegetableWarehouseManagement.Controllers
             return RedirectToAction("Products");
         }
 
-        [HttpGet]
-        public IActionResult RegisterSupply(int productId)
-        {
-            return View(new RegisterSupplyViewModel()
-            {
-                Product = _repo.GetProductById(productId)
-            });
-        }
-
-        [HttpPost]
-        public IActionResult RegisterSupply(RegisterSupplyViewModel model)
-        {
-            var product = _repo.GetProductById(model.ProductId);
-            product.KgsInStock += model.SuppliedUnits;
-            _repo.UpdateProduct(product);
-
-            return RedirectToAction("Products");
-        }
-
         public IActionResult Stats()
         {
             return View(new StatsViewModel()
@@ -234,6 +215,61 @@ namespace FruitAndVegetableWarehouseManagement.Controllers
                 MostUnitsInStock = _repo.TopProductsWithMostUnitsInStock(3),
                 SuppliersWithProductsRunOutOfStock = _repo.SuppliersWithProductsRunOutOfStock()
             });
+        }
+
+        public IActionResult AddSupply(int supplierId)
+        {
+            var supplier = _repo.GetSupplierById(supplierId);
+
+            var supply = new Supply()
+            {
+                Supplier = supplier,
+                Date = DateTime.Now
+            };
+
+            _repo.AddSupply(supply);
+
+            return RedirectToAction("SupplyDetails", new {supplyId = supply.SupplyId});
+        }
+
+        public IActionResult SupplyDetails(int supplyId)
+        {
+            return View(_repo.GetSupplyById(supplyId));
+        }
+
+        [HttpGet]
+        public IActionResult AddSupplyProduct(int supplyId)
+        {
+            return View(new AddSupplyProductViewModel()
+            {
+                Supply = _repo.GetSupplyById(supplyId)
+            });
+        }
+
+        [HttpPost]
+        public IActionResult AddSupplyProduct(AddSupplyProductViewModel model)
+        {
+            var supply = _repo.GetSupplyById(model.SupplyId);
+            var product = _repo.GetProductById(model.ProductId);
+
+
+            supply.SupplyProducts.Add(new SupplyProduct()
+            {
+                ProductId = model.ProductId,
+                Kilograms = model.Kilograms
+            });
+
+            product.KgsInStock += model.Kilograms;
+
+            _repo.UpdateSupply(supply);
+            _repo.UpdateProduct(product);
+
+            return RedirectToAction("SupplyDetails", new {supplyId = supply.SupplyId});
+        }
+
+        public IActionResult Supplies()
+        {
+            return View(_repo.Supplies());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

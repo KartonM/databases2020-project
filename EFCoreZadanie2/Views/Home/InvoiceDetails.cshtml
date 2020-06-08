@@ -44,7 +44,7 @@
         <tr>
             <th style="width: auto" scope="col">Nazwa produktu</th>
             <th style="width: auto" scope="col">Ilość</th>
-            <th style="width: auto" scope="col">Cena za sztukę</th>
+            <th style="width: auto" scope="col">Cena za kg</th>
             <th style="width: auto" scope="col" class="border-left">Kwota</th>
         </tr>
         </thead>
@@ -53,7 +53,7 @@
         {
             <tr class="border-top">
                 <td>@invoiceProduct.Product.Name</td>
-                <td>@invoiceProduct.Kilograms</td>
+                <td>@invoiceProduct.Kilograms kg</td>
                 <td>@invoiceProduct.Product.SellingPricePerKg</td>
                 <td class="border-left">@invoiceProduct.Amount() PLN</td>
             </tr>

@@ -12,5 +12,7 @@ namespace FruitAndVegetableWarehouseManagement.Models
 
         public Supplier Supplier { get; set; }
         public ICollection<SupplyProduct> SupplyProducts { get; set; }
+
+        public string DateTimeString() => $"{Date.ToShortDateString()}, {Date.ToShortTimeString()}";
     }
 }
