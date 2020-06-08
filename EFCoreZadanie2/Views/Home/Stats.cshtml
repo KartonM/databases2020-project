@@ -8,10 +8,30 @@
     <h3>Statystyki</h3>
     <dl class="row">
         <dt class="col-sm-4">
-            Suma sprzedaży z ostatnich 7 dni
+            Bilans z ostatnich 7 dni
         </dt>
         <dd class="col-sm-8">
-            @Model.WeeklySum PLN
+            @if (Model.WeeklyBalance < 0)
+            {
+                <span class="text-danger">@Model.WeeklyBalance zł</span>
+            }
+            else
+            {
+                <span class="text-success">@Model.WeeklyBalance zł</span>
+            }
+        </dd>
+        <dt class="col-sm-4">
+            Bilans z ostatnich 30 dni
+        </dt>
+        <dd class="col-sm-8">
+            @if (Model.MonthlyBalance < 0)
+            {
+                <span class="text-danger">@Model.MonthlyBalance zł</span>
+            }
+            else
+            {
+                <span class="text-success">@Model.MonthlyBalance zł</span>
+            }
         </dd>
         <dt class="col-sm-4">
             Najaktywniejsi klienci z ostatnich 7 dni
@@ -20,15 +40,9 @@
             @{ var i = 1;}
             @foreach (var (customer, amount) in Model.WeeklyBestCustomers)
             {
-                <p>@i. @customer.CompanyName - @amount PLN</p> 
-                {i++;}
+                <p>@i. @customer.CompanyName - @amount PLN</p>
+                { i++; }
             }
-        </dd>
-        <dt class="col-sm-4">
-            Suma sprzedaży z ostatnich 30 dni
-        </dt>
-        <dd class="col-sm-8">
-            @Model.MonthlySum PLN
         </dd>
         <dt class="col-sm-4">
             Najaktywniejsi klienci z ostatnich 30 dni
@@ -37,8 +51,8 @@
             @{ i = 1;}
             @foreach (var (customer, amount) in Model.MonthlyBestCustomers)
             {
-                <p>@i. @customer.CompanyName - @amount PLN</p> 
-                {i++;}
+                <p>@i. @customer.CompanyName - @amount PLN</p>
+                { i++; }
             }
         </dd>
         <dt class="col-sm-4">
@@ -49,7 +63,7 @@
             @foreach (var product in Model.MostUnitsInStock)
             {
                 <p>@i. @product.Name - liczba sztuk: @product.KgsInStock</p>
-                {i++;}
+                { i++; }
             }
         </dd>
         <dt class="col-sm-4">
@@ -60,6 +74,12 @@
             {
                 <p>@supplier.CompanyName - @string.Join(", ", products.Select(p => p.Name))</p>
             }
+        </dd>
+        <dt class="col-sm-4">
+            Wartość produktów na magazynie
+        </dt>
+        <dd class="col-sm-8">
+            @Model.MaxValueOfStockProducts zł
         </dd>
     </dl>
 </div>

@@ -206,14 +206,21 @@ namespace FruitAndVegetableWarehouseManagement.Controllers
 
         public IActionResult Stats()
         {
+            var monthlySales = _repo.InvoicesFromLastNDays(30).Sum(i => i.Amount());
+            var monthlySupplyCosts = _repo.SuppliesFromLastNDays(30).Sum(s => s.Cost());
+
+            var weeklySales = _repo.InvoicesFromLastNDays(7).Sum(i => i.Amount());
+            var weeklySupplyCosts = _repo.SuppliesFromLastNDays(7).Sum(s => s.Cost());
+
             return View(new StatsViewModel()
             {
-                MonthlySum = _repo.Invoices().Where(i => (DateTime.Now - i.Date).Days < 30).Sum(i => i.Amount()),
+                MonthlyBalance = monthlySales - monthlySupplyCosts,
                 MonthlyBestCustomers = _repo.TopCustomersWithAmountsFromLast(30, 3),
-                WeeklySum = _repo.Invoices().Where(i => (DateTime.Now - i.Date).Days < 7).Sum(i => i.Amount()),
+                WeeklyBalance = weeklySales - weeklySupplyCosts,
                 WeeklyBestCustomers = _repo.TopCustomersWithAmountsFromLast(7, 3),
-                MostUnitsInStock = _repo.TopProductsWithMostUnitsInStock(3),
-                SuppliersWithProductsRunOutOfStock = _repo.SuppliersWithProductsRunOutOfStock()
+                MostUnitsInStock = _repo.TopProductsWithMostKilogramsInStock(3),
+                SuppliersWithProductsRunOutOfStock = _repo.SuppliersWithProductsRunOutOfStock(),
+                MaxValueOfStockProducts = _repo.MaxValueOfProductsOnStock()
             });
         }
 

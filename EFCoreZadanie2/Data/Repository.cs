@@ -96,6 +96,10 @@ namespace FruitAndVegetableWarehouseManagement.Data
             .ThenInclude(ip => ip.Product)
             .FirstOrDefault(i => i.InvoiceID == invoiceId);
 
+        public IEnumerable<Invoice> InvoicesFromLastNDays(int days) =>
+            _db.Invoices.Include(i => i.Customer).Include(i => i.InvoiceProducts).ThenInclude(ip => ip.Product)
+                .Where(i => (DateTime.Now - i.Date).Days < days).AsEnumerable();
+
         public IEnumerable<Supply> Supplies() =>
             _db.Supplies.Include(s => s.Supplier).OrderByDescending(s => s.Date).AsEnumerable();
 
@@ -115,6 +119,10 @@ namespace FruitAndVegetableWarehouseManagement.Data
             .ThenInclude(sp => sp.Product).Include(s => s.Supplier).ThenInclude(s => s.Products)
             .FirstOrDefault(s => s.SupplyId == supplyId);
 
+        public IEnumerable<Supply> SuppliesFromLastNDays(int days) =>
+            _db.Supplies.Include(s => s.SupplyProducts).ThenInclude(s => s.Product)
+                .Where(s => (DateTime.Now - s.Date).Days < days).AsEnumerable();
+
         public IEnumerable<KeyValuePair<Customer, decimal>> TopCustomersWithAmountsFromLast(int days, int count) => _db
             .Companies
             .OfType<Customer>()
@@ -130,7 +138,7 @@ namespace FruitAndVegetableWarehouseManagement.Data
             .Take(count)
             .ToList();
 
-        public IEnumerable<Product> TopProductsWithMostUnitsInStock(int count) =>
+        public IEnumerable<Product> TopProductsWithMostKilogramsInStock(int count) =>
             _db.Products.OrderByDescending(p => p.KgsInStock).Take(count).ToList();
 
         public IEnumerable<KeyValuePair<Supplier, IEnumerable<Product>>> SuppliersWithProductsRunOutOfStock() => _db
@@ -143,5 +151,9 @@ namespace FruitAndVegetableWarehouseManagement.Data
                 grouping.AsEnumerable()
             ))
             .ToList();
+
+        public decimal MaxValueOfProductsOnStock() => _db
+            .Products
+            .Sum(p => p.SellingPricePerKg * p.KgsInStock);
     }
 }

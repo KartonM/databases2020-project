@@ -14,5 +14,7 @@ namespace FruitAndVegetableWarehouseManagement.Models
         public ICollection<SupplyProduct> SupplyProducts { get; set; }
 
         public string DateTimeString() => $"{Date.ToShortDateString()}, {Date.ToShortTimeString()}";
+
+        public decimal Cost() => SupplyProducts?.Sum(sp => sp.Cost()) ?? decimal.Zero;
     }
 }

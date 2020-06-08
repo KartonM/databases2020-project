@@ -15,5 +15,6 @@ namespace FruitAndVegetableWarehouseManagement.Models
 
         public int Kilograms { get; set; }
 
+        public decimal Cost() => Product.BuyingPricePerKg * Kilograms;
     }
 }
