@@ -40,7 +40,7 @@
             @{ var i = 1;}
             @foreach (var (customer, amount) in Model.WeeklyBestCustomers)
             {
-                <p>@i. @customer.CompanyName - @amount PLN</p>
+                <p>@i. @customer.CompanyName - @amount zł</p>
                 { i++; }
             }
         </dd>
@@ -51,18 +51,18 @@
             @{ i = 1;}
             @foreach (var (customer, amount) in Model.MonthlyBestCustomers)
             {
-                <p>@i. @customer.CompanyName - @amount PLN</p>
+                <p>@i. @customer.CompanyName - @amount zł</p>
                 { i++; }
             }
         </dd>
         <dt class="col-sm-4">
-            Produkty z największą ilością sztuk w magazynie:
+            Produkty, których zalega najwięcej na magazynie:
         </dt>
         <dd class="col-sm-8">
             @{ i = 1; }
             @foreach (var product in Model.MostUnitsInStock)
             {
-                <p>@i. @product.Name - liczba sztuk: @product.KgsInStock</p>
+                <p>@i. @product.Name - @product.KgsInStock kg</p>
                 { i++; }
             }
         </dd>
