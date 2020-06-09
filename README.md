@@ -35,7 +35,7 @@ Widok [AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/
 
 ![AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/master/img/addProduct.png)<br/>
 
-Kod w [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs) obsługujący ten widok. Umożliwia znalezienie w bazie danych takich jak dostawca, kategoria produktu i ostatecznie dodanie danych do bazy.<br>
+Kod w [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs) obsługujący ten widok. Umożliwia znalezienie danych takich jak dostawca, kategoria produktu i ostatecznie dodanie danych do bazy.<br>
 
 ![HomeController.cs](https://github.com/KartonM/databases2020-project/blob/master/img/addProductController.png)<br>
 
