@@ -31,20 +31,18 @@ W aplikacji został zasotosowany pattern MVC. Poza wspomnianymi wyżej klasami M
 
 ## Przewodnik po kodzie
 -dodanie produktu:<br/>
-Widok [AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Views/Home/AddProduct.cshtml) zwracany przez Controller [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs)<br/>
+Widok [AddCategory.cshtml](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Views/Home/AddCategory.cshtml) zwracany przez Controller [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs)<br/>
 
-![AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/master/img/addProduct.png)<br/>
+![AddCategory.cshtml](https://github.com/KartonM/databases2020-project/blob/master/img/AddCategoryView.png)<br/>
 
-Kod w [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs) obsługujący ten widok. Umożliwia znalezienie danych takich jak dostawca, kategoria produktu i ostatecznie dodanie danych do bazy.<br>
+Kod w [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs) obsługujący ten widok. Umożliwia wykonanie odpowiedniej metody z [Data/Repository.cs](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Data/Repository.cs).<br>
 
-![HomeController.cs](https://github.com/KartonM/databases2020-project/blob/master/img/addProductController.png)<br>
+![HomeController.cs](https://github.com/KartonM/databases2020-project/blob/master/img/addCategoryController.png)<br>
 
-Sam HomeController wywołuje w tej metodzie 3 zapytania bazodanowe zdefiniowane w pliku [Data/Repository.cs](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Data/Repository.cs)
-![AddProduct Repository](https://github.com/KartonM/databases2020-project/blob/master/img/addProductRepository.png)
+Za pośrednictwem Repository[Repository.cs](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Data/Repository.cs) pobieramy z bazy danych wszystkie kategorie i dostawców, aby użytkownik tworząc produkt mógł wybrać ich z listy<br />
 
-Natomiast baza danych jest przechowywana w pliku [Repository.cs](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Data/Repository.cs)
+![AddCategory Repository](https://github.com/KartonM/databases2020-project/blob/master/img/addCategoryRepository.png)<br/>
 
-![DataBase](https://github.com/KartonM/databases2020-project/blob/master/img/DataBase.png)
 
 
 ## Contributors
