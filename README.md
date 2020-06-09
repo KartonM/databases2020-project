@@ -28,15 +28,24 @@ W aplikacji został zasotosowany pattern MVC. Poza wspomnianymi wyżej klasami M
   •wartość produktu w magazynie<br/>
 -tworzenie dostaw<br/>
 
+
 ## Przewodnik po kodzie
--dodanie produktu:
+-dodanie produktu:<br/>
 Widok [AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Views/Home/AddProduct.cshtml) zwracany przez Controller [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs)<br/>
- ![AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/master/img/addProduct.png)
-Kod w [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs) obsługujący to ten widok.Umożliwia znalezienie w bazie danych takich jak dostawca, kategoria produktu i ostatecznie dodanie danych do bazy.
-![HomeController.cs](https://github.com/KartonM/databases2020-project/blob/master/img/addProductController.png)
+
+![AddProduct.cshtml](https://github.com/KartonM/databases2020-project/blob/master/img/addProduct.png)<br/>
+
+Kod w [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs) obsługujący ten widok. Umożliwia znalezienie w bazie danych takich jak dostawca, kategoria produktu i ostatecznie dodanie danych do bazy.<br>
+
+![HomeController.cs](https://github.com/KartonM/databases2020-project/blob/master/img/addProductController.png)<br>
+
 Sam HomeController wywołuje w tej metodzie 3 zapytania bazodanowe zdefiniowane w pliku [Data/Repository.cs](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Data/Repository.cs)
+![AddProduct Repository](https://github.com/KartonM/databases2020-project/blob/master/img/addProductRepository.png)
+
 Natomiast baza danych jest przechowywana w pliku [Repository.cs](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Data/Repository.cs)
+
 ![DataBase](https://github.com/KartonM/databases2020-project/blob/master/img/DataBase.png)
+
 
 ## Contributors
 - [Marcin Kozubek](https://github.com/KartonM)
