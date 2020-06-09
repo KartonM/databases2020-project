@@ -30,7 +30,7 @@ W aplikacji został zasotosowany pattern MVC. Poza wspomnianymi wyżej klasami M
 
 
 ## Przewodnik po kodzie
--dodanie produktu:<br/>
+-dodanie kategorii:<br/>
 Widok [AddCategory.cshtml](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Views/Home/AddCategory.cshtml) zwracany przez Controller [HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs)<br/>
 
 ![AddCategory.cshtml](https://github.com/KartonM/databases2020-project/blob/master/img/addCategoryView.png)<br/>
