@@ -10,7 +10,7 @@ Klasy, na podstawie których generowana są tabele znajdują się w folderze [Mo
 ### Logika aplikacji i wartwa widoku
 W aplikacji został zasotosowany pattern MVC. Poza wspomnianymi wyżej klasami Modelu mamy też jeden Controller ([HomeController](https://github.com/KartonM/databases2020-project/blob/master/EFCoreZadanie2/Controllers/HomeController.cs)) oraz widoki Razor Views znajdujące się w folderze [Views/Home](https://github.com/KartonM/databases2020-project/tree/master/EFCoreZadanie2/Views/Home). Do komunikacji między Controllerem a widokami w niektórych przyapdkach wykorzystywane są również klasy znajdujące się w folderze [ViewModels](https://github.com/KartonM/databases2020-project/tree/master/EFCoreZadanie2/ViewModels)
 
-##Opis funkcjonalności:<br/>
+## Opis funkcjonalności:<br/>
 -dodawanie kategorii produktu<br/>
 -dodawanie klientów<br/>
 -dodawanie i tworzenie nowych faktur<br/>
